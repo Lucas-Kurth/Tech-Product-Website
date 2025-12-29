@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Technology Product Finder</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -43,7 +43,7 @@
             <!-- iPad Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/ipad.png" alt="Image of an Apple iPad">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/ipad.png') }}" alt="Image of an Apple iPad">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">Apple iPad Air M3</h3>
@@ -59,7 +59,7 @@
             <!-- Lenovo Laptop Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/lenovo.png" alt="Image of a Lenovo Laptop">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/lenovo.png') }}" alt="Image of a Lenovo Laptop">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">Lenovo ThinkPad</h3>
@@ -75,7 +75,7 @@
             <!-- Apple Watch Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/applewatch.png" alt="Image of an Apple Watch">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/applewatch.png') }}" alt="Image of an Apple Watch">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">Apple Watch Series 10</h3>
@@ -91,7 +91,7 @@
             <!-- iPhone Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/iphone.png" alt="Image of an iPhone">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/iphone.png') }}" alt="Image of an iPhone">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">iPhone 17 Pro</h3>
@@ -107,7 +107,7 @@
             <!-- Samsung Flip Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/samsungFlip.png" alt="Image of a Samsung Galaxy Z Flip">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/samsungFlip.png') }}" alt="Image of a Samsung Galaxy Z Flip">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">Samsung Galaxy Z Flip 6</h3>
@@ -123,7 +123,7 @@
             <!-- Gaming Laptop Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/gamingLaptop.png" alt="Image of a Gaming Laptop">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/gamingLaptop.png') }}" alt="Image of a Gaming Laptop">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">Alienware Laptop</h3>
@@ -139,7 +139,7 @@
             <!-- Headphones Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/headphones.png" alt="Image of Wireless Headphones">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/headphones.png') }}" alt="Image of Wireless Headphones">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">Sony WH-1000XM5</h3>
@@ -155,7 +155,7 @@
             <!-- Graphics Card -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="icons/graphic.png" alt="Image of a Graphics Card">
+                    <img class="card-image" src="{{ url_for('static', filename='icons/graphic.png') }}" alt="Image of a Graphics Card">
                 </div>
                 <div class="card-content">
                     <h3 class="card-name">NVIDIA RTX 4080</h3>
