@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Profile - Technology Product Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="/">TechFinder</a>
+        </div>
+        <div class="nav-actions">
+            <a href="/profile" class="nav-icon" title="Profile">
+                <i class="fa-regular fa-user"></i>
+            </a>
+            <a href="/wishlist" class="nav-btn nav-btn-wishlist">Wishlist</a>
+            <a href="/" class="nav-btn nav-btn-login">Home</a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="head1">My Profile</h1>
+        <p class="subtitle">Manage your account information</p>
+    </header>
+
+    <!-- Profile Container -->
+    <main class="profile-container">
+        <div class="profile-card">
+            <div class="profile-icon">
+                <i class="fa-solid fa-user-circle"></i>
+            </div>
+
+            <div class="profile-info">
+                <div class="profile-field">
+                    <label>Username</label>
+                    <p id="username">Loading...</p>
+                </div>
+
+                <div class="profile-field">
+                    <label>Email</label>
+                    <p id="email">Loading...</p>
+                </div>
+
+                <div class="profile-field">
+                    <label>Member Since</label>
+                    <p id="created-at">Loading...</p>
+                </div>
+
+                <div class="profile-field">
+                    <label>Wishlist Items</label>
+                    <p id="wishlist-count">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Technology Product Finder. All rights reserved.</p>
+    </footer>
+
+    <!-- Authentication & Profile Scripts -->
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+</body>
+</html>

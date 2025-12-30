@@ -124,6 +124,21 @@ def api_logout():
         'message': 'Logged out successfully'
     })
 
+@app.route("/api/auth/status", methods=['GET'])
+def auth_status():
+    from flask import session
+
+    if 'user_id' in session:
+        return jsonify({
+            'authenticated': True,
+            'user_id': session['user_id'],
+            'username': session['username']
+        })
+    else:
+        return jsonify({
+            'authenticated': False
+        })
+
 
 # Product Endpoints
 @app.route("/api/products", methods=['GET'])
@@ -212,7 +227,42 @@ def remove_from_wishlist():
 # User Endpoints
 @app.route("/api/users/<int:user_id>", methods=['GET'])
 def get_user(user_id):
-    pass
+    from backend.db_utils import get_user_by_id
+    from flask import session
+
+    # Security check: ensure logged-in user can only access their own profile
+    if 'user_id' not in session:
+        return jsonify({
+            'success': False,
+            'error': 'Not authenticated'
+        }), 401
+
+    if session['user_id'] != user_id:
+        return jsonify({
+            'success': False,
+            'error': 'Unauthorized access'
+        }), 403
+
+    # Get user from database
+    user = get_user_by_id(user_id)
+
+    if not user:
+        return jsonify({
+            'success': False,
+            'error': 'User not found'
+        }), 404
+
+    # Return user data (extract from database object, not session)
+    return jsonify({
+        'success': True,
+        'user': {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+            'created_at': user.created_at.strftime('%Y-%m-%d')
+        }
+    })
+
 
 @app.route("/api/users/<int:user_id>", methods=['PUT'])
 def update_user(user_id):

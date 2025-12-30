@@ -1,11 +1,3 @@
-/*
-    put this in login.html
-    <!-- Link to JavaScript file -->
-    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
-
-
-    make sure 'loginForm' matches whatever <form id = ---> THIS <-----
-                         ++++++++ */
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     

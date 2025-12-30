@@ -91,6 +91,18 @@ body {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
 }
+
+.nav-btn-logout {
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+}
+
+.nav-btn-logout:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
 /* Header Styles */
 .header {
     text-align: center;
@@ -237,6 +249,58 @@ body {
     margin-top: 10px;
 }
 
+
+/* Profile Page Styles */
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.profile-icon {
+    font-size: 80px;
+    color: #667eea;
+    margin-bottom: 30px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.profile-field {
+    text-align: left;
+    padding: 15px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+    border-radius: 10px;
+}
+
+.profile-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.profile-field p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
 
 /* Footer */
 .footer {

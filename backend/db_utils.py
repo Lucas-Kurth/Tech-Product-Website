@@ -52,6 +52,12 @@ def get_user_by_email(email):
     """Get a user by email"""
     with app.app_context():
         return User.query.filter_by(email=email).first()
+    
+    
+def get_user_by_id(user_id):
+    """Get a user by ID"""
+    with app.app_context():
+        return User.query.filter_by(id=user_id).first()
 
 
 def authenticate_user(username_or_email, password):
