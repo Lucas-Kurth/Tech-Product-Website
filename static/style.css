@@ -81,6 +81,16 @@ body {
     box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
 }
 
+.nav-btn-wishlist {
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+}
+
+.nav-btn-wishlist:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
 /* Header Styles */
 .header {
     text-align: center;

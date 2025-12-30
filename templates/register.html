@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Technology Product Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="/">TechFinder</a>
+        </div>
+        <div class="nav-actions">
+            <a href="#" class="nav-icon" title="Profile">
+                <i class="fa-regular fa-user"></i>
+            </a>
+            <a href="#" class="nav-btn nav-btn-wishlist">Wishlist</a>
+            <a href="/login" class="nav-btn nav-btn-login">Login</a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="head1">Register Page</h1>
+        <p class="subtitle">Create an Account Here!</p>
+    </header>
+
+    <!-- Registration Form -->
+    <main class="login-container">
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="btn-group">
+            <button type="submit" class="btn-login">Register</button>
+            <button type="button" class="btn-register">Back to Login</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
