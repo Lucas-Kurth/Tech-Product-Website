@@ -2,6 +2,12 @@
 
 A Flask-based e-commerce website for browsing and discovering technology products.
 
+## 🚀 New Team Member? Start Here!
+
+**First time setup:** See [SETUP.md](SETUP.md) for detailed step-by-step instructions.
+
+**Having issues?** Check [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for common fixes.
+
 ## Project Structure
 
 ```
@@ -27,22 +33,20 @@ Tech-Product-Website/
 
 ## Quick Start
 
-### 1. Install Dependencies
 ```bash
-pip install flask flask-sqlalchemy
-```
+# 1. Install dependencies
+pip install -r requirements.txt
 
-### 2. Initialize Database
-```bash
+# 2. Initialize database (creates techfinder.db)
 python scripts/init_db.py
-```
 
-### 3. Run Flask Server
-```bash
+# 3. Run Flask server
 python app.py
 ```
 
 Visit: http://127.0.0.1:5000/
+
+**Note:** See [SETUP.md](SETUP.md) for complete setup instructions including virtual environment.
 
 ## Backend Functions
 
@@ -81,8 +85,14 @@ Features:
 
 ## Documentation
 
+### Getting Started
+- **[SETUP.md](SETUP.md)** - Complete setup guide for new team members
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and fixes
+
+### Reference
 - **[Quick Reference](docs/QUICK_REFERENCE.md)** - Common commands and examples
 - **[Database Guide](docs/DATABASE_GUIDE.md)** - Comprehensive database documentation
+- **[Project Structure](docs/PROJECT_STRUCTURE.md)** - Architecture overview
 
 ## Database Models
 
