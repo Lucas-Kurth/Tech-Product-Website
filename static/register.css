@@ -7,6 +7,12 @@ body {
     flex-direction: column;
 }
 
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 /* Navigation Bar  -login page button */
 .navbar {
     display: flex;
@@ -74,6 +80,100 @@ body {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
 }
+
+/* Username and Email Group*/
+.usr-email-group {
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+
+.pass-group {
+    display: flex;
+    margin: 0 auto 15px;
+    gap: 50px;
+}
+
+.pass .conf-pass {
+    flex: 1;
+}
+
+.pass-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.pass-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.btn-login {
+    text-decoration: none;
+    font-size: 14px;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-login:hover {
+    background: #764ba2;
+    transform: scale(1.1);
+}
+
+.btn-register {
+    text-decoration: none;
+    font-size: 14px;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-left: 12px;
+}
+
+.btn-register:hover {
+    background: #764ba2;
+    transform: scale(1.1);
+}
+
 
 /* Header Styles */
 .header {
