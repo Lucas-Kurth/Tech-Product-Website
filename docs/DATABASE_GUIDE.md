@@ -293,40 +293,11 @@ with app.app_context():
 
 ---
 
-## 8. Database Maintenance
-
-### View Database Schema
-```bash
-sqlite3 techfinder.db ".schema"
-```
-
-### Direct SQL Queries
-```bash
-sqlite3 techfinder.db "SELECT * FROM products;"
-```
-
-### Reset Database (Delete All Data)
-```python
-from app import app, db
-
-with app.app_context():
-    db.drop_all()  # Delete all tables
-    db.create_all()  # Recreate empty tables
-    print("Database reset!")
-```
-
-### Backup Database
-```bash
-cp techfinder.db techfinder_backup_$(date +%Y%m%d).db
-```
-
----
-
-## 9. Quick Testing Scripts
+## 8. Quick Testing Scripts
 
 ### Test User Registration & Wishlist Flow
 ```python
-from db_utils import *
+from backend.db_utils import *
 
 # Create users
 user1 = create_user('alice', 'alice@example.com', 'pass123')
@@ -353,62 +324,42 @@ for p in get_user_wishlist(user2.id):
 
 ---
 
-## 10. Database Location & Info
+## 9. Database Maintenance
 
-- **File**: `/Users/jackkurth/Desktop/Tech-Product-Website/techfinder.db`
-- **Type**: SQLite3
-- **Size**: ~28KB (will grow with more data)
-- **Excluded from Git**: Yes (via `.gitignore`)
+### Backup Database
+```bash
+cp techfinder.db techfinder_backup_$(date +%Y%m%d).db
+```
+
+### View Database Schema
+```bash
+sqlite3 techfinder.db ".schema"
+```
+
+### Direct SQL Queries
+```bash
+sqlite3 techfinder.db "SELECT * FROM products;"
+```
+
+### Reset Database (Start Fresh)
+```bash
+rm techfinder.db
+python scripts/init_db.py
+```
 
 ---
 
-## Common Commands Reference
+## Quick Command Reference
 
 ```bash
 # View all products
-python -c "from db_utils import list_all_products; list_all_products()"
+python -c "from backend.db_utils import list_all_products; list_all_products()"
 
 # View all users
-python -c "from db_utils import list_all_users; list_all_users()"
+python -c "from backend.db_utils import list_all_users; list_all_users()"
 
-# Re-initialize database (keeps existing data)
-python init_db.py
-
-# Interactive Python shell with database access
-python
->>> from app import app, db
->>> from models import *
->>> with app.app_context():
-...     # Your queries here
+# Interactive admin panel
+python scripts/db_admin.py
 ```
 
----
-
-## Next Steps for Backend Development
-
-1. **Create API Endpoints** - Build REST API routes for frontend
-2. **Add Session Management** - Install Flask-Login for user sessions
-3. **Form Validation** - Add Flask-WTF for secure form handling
-4. **Password Reset** - Implement email-based password recovery
-5. **Admin Panel** - Create admin routes to manage products
-6. **Search Functionality** - Add full-text search for products
-7. **Reviews/Ratings** - Create new models for product reviews
-
----
-
-## Troubleshooting
-
-### "Database is locked" error
-The database file is being used by another process. Close other connections.
-
-### Need to start fresh
-```bash
-rm techfinder.db
-python init_db.py
-```
-
-### Import errors
-Make sure Flask-SQLAlchemy is installed:
-```bash
-pip install flask-sqlalchemy
-```
+For setup and troubleshooting, see [SETUP.md](SETUP.md)

@@ -14,7 +14,7 @@ from backend.models import User, Product, WishlistItem
 def create_user(username, email, password):
     """
     Create a new user
-    Returns: User object if successful, None if user already exists
+    Returns: dict with user data if successful, None if user already exists
     """
     with app.app_context():
         # Check if user already exists
@@ -30,8 +30,16 @@ def create_user(username, email, password):
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
+
+        # Extract data before session closes
+        user_data = {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email
+        }
+
         print(f"User '{username}' created successfully!")
-        return user
+        return user_data
 
 
 def get_user_by_username(username):

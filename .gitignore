@@ -73,3 +73,5 @@ htmlcov/
 *.bak
 *.backup
 techfinder_backup_*.db
+
+cookies.txt

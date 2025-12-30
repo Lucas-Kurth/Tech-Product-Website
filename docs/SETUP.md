@@ -317,12 +317,157 @@ load_dotenv()
 
 ---
 
-## Need Help?
+## Troubleshooting Common Issues
 
-- **Documentation:** Check `/docs` folder
-- **Database Issues:** Run `python scripts/db_admin.py` to inspect
-- **Import Errors:** Make sure you're in project root
-- **Flask Errors:** Check Python version (requires Python 3.7+)
+### Quick Diagnostics
+
+Run this command to check your setup:
+
+```bash
+python -c "
+import sys
+print('Python version:', sys.version)
+try:
+    import flask
+    print('✓ Flask installed:', flask.__version__)
+except:
+    print('✗ Flask NOT installed - run: pip install flask')
+
+try:
+    import flask_sqlalchemy
+    print('✓ Flask-SQLAlchemy installed')
+except:
+    print('✗ Flask-SQLAlchemy NOT installed - run: pip install flask-sqlalchemy')
+
+import os
+if os.path.exists('techfinder.db'):
+    print('✓ Database file exists')
+else:
+    print('✗ Database NOT found - run: python scripts/init_db.py')
+
+if os.path.exists('backend/models.py'):
+    print('✓ Backend files found')
+else:
+    print('✗ Backend files NOT found - check git clone')
+"
+```
+
+### Common Error Messages & Fixes
+
+**"ModuleNotFoundError: No module named 'flask'"**
+```bash
+pip install -r requirements.txt
+```
+
+**"ModuleNotFoundError: No module named 'backend'"**
+
+You're in the wrong directory!
+```bash
+# Check where you are
+pwd
+
+# Should be in project root, not inside scripts/
+cd /path/to/Tech-Product-Website
+
+# Then run commands from root
+python scripts/init_db.py
+```
+
+**"FileNotFoundError: techfinder.db"**
+
+Database not initialized:
+```bash
+python scripts/init_db.py
+```
+
+**"sqlite3.OperationalError: table already exists"**
+
+Normal - database already initialized. To reset:
+```bash
+rm techfinder.db
+python scripts/init_db.py
+```
+
+**"ImportError: attempted relative import with no known parent package"**
+
+Running script incorrectly:
+```bash
+# ❌ Wrong
+cd scripts
+python init_db.py
+
+# ✓ Correct
+python scripts/init_db.py
+```
+
+**Flask server starts but page shows "Hello, Flask!"**
+
+Make sure you're at http://127.0.0.1:5000/ (not /login)
+
+**No products showing on homepage**
+
+Database not populated:
+```bash
+# Check if products exist
+python -c "from backend.db_utils import list_all_products; list_all_products()"
+
+# If empty, reinitialize
+rm techfinder.db
+python scripts/init_db.py
+```
+
+**Virtual Environment Not Active**
+
+Your prompt should show `(.venv)` at the beginning.
+```bash
+# Mac/Linux
+source .venv/bin/activate
+
+# Windows
+.venv\Scripts\activate
+```
+
+### Platform-Specific Issues
+
+**Mac/Linux:**
+```bash
+# Virtual environment activation
+source .venv/bin/activate
+
+# Permission issues
+chmod +x scripts/init_db.py
+```
+
+**Windows:**
+```cmd
+# Virtual environment activation
+.venv\Scripts\activate
+
+# Execution policy error (in PowerShell)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+### Complete Reset
+
+If everything is broken, start fresh:
+
+```bash
+# 1. Remove virtual environment
+rm -rf .venv
+
+# 2. Remove database
+rm techfinder.db
+
+# 3. Remove Python cache
+find . -type d -name __pycache__ -exec rm -rf {} +
+
+# 4. Start setup from scratch
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python scripts/init_db.py
+python app.py
+```
 
 ---
 
