@@ -49,7 +49,9 @@
                     <p class="card-desc">{{ product.description }}</p>
                     <div class="price-btn-row">
                         <p class="card-price">${{ product.price }}</p>
-                        <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="card-btn wishlist-btn" data-product-id="{{ product.id }}">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
                     </div>
                     <a class="card-link" href="{{ product.external_link }}" target="_blank">View Product →</a>
                 </div>
@@ -65,5 +67,7 @@
 
     <!-- Authentication Script -->
     <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <!-- Wishlist Actions Script -->
+    <script src="{{ url_for('static', filename='js/wishlist-actions.js') }}"></script>
 </body>
 </html>

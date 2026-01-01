@@ -200,13 +200,13 @@ def add_products_bulk(products_list):
             # Check if product already exists
             existing = Product.query.filter_by(name=product_data['name']).first()
             if existing:
-                print(f"⊘ Skipping '{product_data['name']}' - already exists")
+                print(f"Skipping '{product_data['name']}' - already exists")
                 continue
 
             product = Product(**product_data)
             db.session.add(product)
             added += 1
-            print(f"✓ Added: {product_data['name']}")
+            print(f"Added: {product_data['name']}")
 
         db.session.commit()
         print(f"\n{added} new products added to database!")

@@ -265,16 +265,108 @@ def delete_product(product_id):
 
 # Wishlist Endpoints
 @app.route("/api/wishlist", methods=['POST'])
-def add_to_wishlist():
-    pass
+def add_to_wishlist_api():
+    from backend.db_utils import add_to_wishlist
+    from flask import session
 
-@app.route("/api/wishlist/<int:user_id>", methods=['GET'])
-def get_user_wishlist(user_id):
-    pass
+    # Check authentication
+    if 'user_id' not in session:
+        return jsonify({
+            'success': False,
+            'error': 'Not authenticated'
+        }), 401
+
+    data = request.get_json()
+    product_id = data.get('product_id')
+
+    if not product_id:
+        return jsonify({
+            'success': False,
+            'error': 'Missing product_id'
+        }), 400
+
+    user_id = session['user_id']
+    wishlist_item = add_to_wishlist(user_id, product_id)
+
+    if wishlist_item:
+        return jsonify({
+            'success': True,
+            'message': 'Product added to wishlist'
+        }), 201
+    else:
+        return jsonify({
+            'success': False,
+            'error': 'Product already in wishlist'
+        }), 409
+
+@app.route("/api/wishlist", methods=['GET'])
+def get_user_wishlist_api():
+    from backend.db_utils import get_user_wishlist
+    from flask import session
+
+    # Check authentication
+    if 'user_id' not in session:
+        return jsonify({
+            'success': False,
+            'error': 'Not authenticated'
+        }), 401
+
+    user_id = session['user_id']
+    wishlist_products = get_user_wishlist(user_id)
+
+    # Convert products to JSON format
+    products_list = []
+    for product in wishlist_products:
+        products_list.append({
+            'id': product.id,
+            'name': product.name,
+            'description': product.description,
+            'price': product.price,
+            'image_url': product.image_url,
+            'external_link': product.external_link,
+            'category': product.category
+        })
+
+    return jsonify({
+        'success': True,
+        'products': products_list,
+        'count': len(products_list)
+    })
 
 @app.route("/api/wishlist", methods=['DELETE'])
-def remove_from_wishlist():
-    pass
+def remove_from_wishlist_api():
+    from backend.db_utils import remove_from_wishlist
+    from flask import session
+
+    # Check authentication
+    if 'user_id' not in session:
+        return jsonify({
+            'success': False,
+            'error': 'Not authenticated'
+        }), 401
+
+    data = request.get_json()
+    product_id = data.get('product_id')
+
+    if not product_id:
+        return jsonify({
+            'success': False,
+            'error': 'Missing product_id'
+        }), 400
+
+    user_id = session['user_id']
+    success = remove_from_wishlist(user_id, product_id)
+
+    if success:
+        return jsonify({
+            'success': True,
+            'message': 'Product removed from wishlist'
+        })
+    else:
+        return jsonify({
+            'success': False,
+            'error': 'Product not found in wishlist'
+        }), 404
 
 
 # User Endpoints
