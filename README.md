@@ -99,3 +99,16 @@ Features:
 - **User** - Authentication and profiles
 - **Product** - Tech product catalog
 - **WishlistItem** - User wishlists (many-to-many)
+
+### Curl command for adding products
+
+curl -X POST http://localhost:5001/api/products \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Product Name",
+    "description": "Product description here",
+    "price": 99.99,
+    "image_url": "https://example.com/image.jpg",
+    "external_link": "https://example.com/buy",
+    "category": "Electronics"
+  }'

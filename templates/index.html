@@ -36,135 +36,25 @@
     <!-- Products Section -->
     <main class="products-container">
         <h2 class="section-title">Featured Products</h2>
-        
+
         <div class="cards-wrapper">
-            <!-- iPad Card -->
+            {% for product in products %}
+            <!-- Product Card: {{ product.name }} -->
             <div class="card">
                 <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/ipad.png') }}" alt="Image of an Apple iPad">
+                    <img class="card-image" src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}">
                 </div>
                 <div class="card-content">
-                    <h3 class="card-name">Apple iPad Air M3</h3>
-                    <p class="card-desc">Powerful M3 chip with stunning Liquid Retina display. Perfect for creative work, multitasking, and entertainment on the go.</p>
-                   <div class="price-btn-row">
-                       <p class="card-price">$599</p>
-                       <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
-                   </div>
-                    <a class="card-link" href="https://www.apple.com/ipad-air/" target="_blank">View Product →</a>
-                </div>
-            </div>
-
-            <!-- Lenovo Laptop Card -->
-            <div class="card">
-                <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/lenovo.png') }}" alt="Image of a Lenovo Laptop">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-name">Lenovo ThinkPad</h3>
-                    <p class="card-desc">Reliable business laptop with legendary keyboard and all-day battery. Built for professionals who demand performance.</p>
+                    <h3 class="card-name">{{ product.name }}</h3>
+                    <p class="card-desc">{{ product.description }}</p>
                     <div class="price-btn-row">
-                        <p class="card-price">$1,299</p>
+                        <p class="card-price">${{ product.price }}</p>
                         <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
                     </div>
-                    <a class="card-link" href="https://www.lenovo.com/thinkpad" target="_blank">View Product →</a>
+                    <a class="card-link" href="{{ product.external_link }}" target="_blank">View Product →</a>
                 </div>
             </div>
-
-            <!-- Apple Watch Card -->
-            <div class="card">
-                <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/applewatch.png') }}" alt="Image of an Apple Watch">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-name">Apple Watch Series 10</h3>
-                    <p class="card-desc">Advanced health sensors with always-on display. Your ultimate fitness companion with seamless iPhone integration.</p>
-                    <div class="price-btn-row">
-                        <p class="card-price">$399</p>
-                        <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <a class="card-link" href="https://www.apple.com/apple-watch-series-10/" target="_blank">View Product →</a>
-                </div>
-            </div>
-
-            <!-- iPhone Card -->
-            <div class="card">
-                <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/iphone.png') }}" alt="Image of an iPhone">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-name">iPhone 17 Pro</h3>
-                    <p class="card-desc">Most powerful iPhone with A18 Pro chip and 48MP camera. Titanium design meets cutting-edge mobile technology.</p>
-                    <div class="price-btn-row">
-                        <p class="card-price">$999</p>
-                        <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <a class="card-link" href="https://www.apple.com/iphone-16-pro/" target="_blank">View Product →</a>
-                </div>
-            </div>
-
-            <!-- Samsung Flip Card -->
-            <div class="card">
-                <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/samsungFlip.png') }}" alt="Image of a Samsung Galaxy Z Flip">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-name">Samsung Galaxy Z Flip 6</h3>
-                    <p class="card-desc">Iconic foldable design with FlexMode and powerful cameras. Stand out with this compact and innovative device.</p>
-                    <div class="price-btn-row">
-                        <p class="card-price">$1,099</p>
-                        <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <a class="card-link" href="https://www.samsung.com/galaxy-z-flip6/" target="_blank">View Product →</a>
-                </div>
-            </div>
-
-            <!-- Gaming Laptop Card -->
-            <div class="card">
-                <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/gamingLaptop.png') }}" alt="Image of a Gaming Laptop">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-name">Alienware Laptop</h3>
-                    <p class="card-desc">High-refresh display with NVIDIA graphics and advanced cooling. Dominate every game with serious power.</p>
-                    <div class="price-btn-row">
-                        <p class="card-price">$1,799</p>
-                        <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <a class="card-link" href="https://rog.asus.com/laptops/" target="_blank">View Product →</a>
-                </div>
-            </div>
-
-            <!-- Headphones Card -->
-            <div class="card">
-                <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/headphones.png') }}" alt="Image of Wireless Headphones">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-name">Sony WH-1000XM5</h3>
-                    <p class="card-desc">Industry-leading noise cancellation with exceptional sound. 30-hour battery and ultra-comfortable all-day design.</p>
-                    <div class="price-btn-row">
-                        <p class="card-price">$349</p>
-                        <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <a class="card-link" href="https://www.sony.com/headphones/" target="_blank">View Product →</a>
-                </div>
-            </div>
-
-            <!-- Graphics Card -->
-            <div class="card">
-                <div class="card-image-container">
-                    <img class="card-image" src="{{ url_for('static', filename='icons/graphic.png') }}" alt="Image of a Graphics Card">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-name">NVIDIA RTX 4080</h3>
-                    <p class="card-desc">Next-gen gaming with ray tracing and DLSS 3 technology. Unlock ultimate graphics power for your PC build.</p>
-                    <div class="price-btn-row">
-                        <p class="card-price">$1,199</p>
-                        <button class="card-btn"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <a class="card-link" href="https://www.nvidia.com/geforce/" target="_blank">View Product →</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </main>
 

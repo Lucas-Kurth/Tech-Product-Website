@@ -20,7 +20,12 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    from backend.db_utils import get_all_products
+
+    # Fetch all products from database
+    products = get_all_products()
+
+    return render_template("index.html", products=products)
 
 # Renders login page
 @app.route("/login")
@@ -199,7 +204,54 @@ def search_products():
 
 @app.route("/api/products", methods=['POST'])
 def create_product():
-    pass
+    from backend.db_utils import add_product
+
+    data = request.get_json()
+
+    # Validate required fields
+    name = data.get('name')
+    description = data.get('description')
+    price = data.get('price')
+    image_url = data.get('image_url')
+
+    if not all([name, description, price, image_url]):
+        return jsonify({
+            'success': False,
+            'error': 'Missing required fields: name, description, price, image_url'
+        }), 400
+
+    # Optional fields
+    external_link = data.get('external_link')
+    category = data.get('category')
+
+    # Add product to database
+    product = add_product(
+        name=name,
+        description=description,
+        price=float(price),
+        image_url=image_url,
+        external_link=external_link,
+        category=category
+    )
+
+    if product:
+        return jsonify({
+            'success': True,
+            'product': {
+                'id': product.id,
+                'name': product.name,
+                'description': product.description,
+                'price': product.price,
+                'image_url': product.image_url,
+                'external_link': product.external_link,
+                'category': product.category
+            }
+        }), 201
+    else:
+        return jsonify({
+            'success': False,
+            'error': 'Product already exists'
+        }), 409
 
 @app.route("/api/products/<int:product_id>", methods=['PUT'])
 def update_product(product_id):

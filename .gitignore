@@ -75,3 +75,4 @@ htmlcov/
 techfinder_backup_*.db
 
 cookies.txt
+*.csv
