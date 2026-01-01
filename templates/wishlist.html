@@ -15,17 +15,33 @@
         <div class="nav-logo">
             <a href="/">TechFinder</a>
         </div>
+
+        <div class="nav-dropdown">
+            <form action="#">
+                <label for="productType">Filter by Product Type:</label>
+                <select name="productType" id="productType">
+                    <option value="Audio">Audio</option>
+                    <option value="Laptops">Laptops</option>
+                    <option value="PC Components">PC Components</option>
+                    <option value="Smartphones">Smartphones</option>
+                    <option value="Tablets">Tablets</option>
+                    <option value="Wearables">Wearables</option>
+                </select>
+            </form>
+        </div>
+        
         <div class="nav-actions">
-            
+            <a href="#" class="nav-icon" title="Profile">
+                <i class="fa-regular fa-user"></i>
+            </a>
         </div>
     </nav>
 
     <!-- Header Section -->
     <header class="header">
-        <h1 class="head1">Your Wishlist</h1>
+        <h1 class="head1">{{ username }}'s Wishlist</h1>
         <p class="subtitle">Manage your favorite products</p>
     </header>
-
 
     <!-- Link to JavaScript file -->
     <script src="{{ url_for('static', filename='js/wishlist.js') }}"></script>

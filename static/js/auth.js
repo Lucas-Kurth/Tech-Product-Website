@@ -12,7 +12,7 @@ async function updateNavbar() {
                 <a href="/profile" class="nav-icon" title="Profile">
                     <i class="fa-regular fa-user"></i>
                 </a>
-                <span class="nav-username">Welcome, ${data.username}!</span>
+                <span class="nav-username">Hello, ${data.username}!</span>
                 <a href="/wishlist" class="nav-btn nav-btn-wishlist">Wishlist</a>
                 <button id="logoutBtn" class="nav-btn nav-btn-logout">Logout</button>
             `;

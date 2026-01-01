@@ -44,7 +44,8 @@ def wishlist():
     if 'user_id' not in session:
         return redirect(url_for('login'))
 
-    return render_template("wishlist.html")
+    username = session.get('username', 'User')
+    return render_template("wishlist.html", username=username)
 
 @app.route("/profile")
 def profile():
